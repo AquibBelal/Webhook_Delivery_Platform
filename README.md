@@ -33,11 +33,11 @@ flowchart TD
         DelayedZSet -->|Polled by Scheduler| ReadyQueue
 
         Evaluator -->|No| DLQ[(Redis Dead Letter Queue)]
-        DLQ -->|Manual / Automated Trigger| Replay[/dlq/replay Endpoint]
+        DLQ -->|Manual / Automated Trigger| Replay["/dlq/replay Endpoint"]
         Replay --> ReadyQueue
     end
 
     subgraph Observability
-        Worker -->|Latency, Status Codes, Queue Depth| Prom[Prometheus Metrics /metrics]
+        Worker -->|Latency, Status Codes, Queue Depth| Prom["Prometheus Metrics (/metrics)"]
         Worker -->|Structured Audit Logs| DB
     end
